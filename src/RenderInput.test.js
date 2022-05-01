@@ -33,6 +33,7 @@ describe('Console button conditionally triggered', () => {
     const outputConsole = jest.fn()
     render(<RenderInput log={outputConsole} />)
     userEvent.click(screen.getByRole("button"))
+    // 呼び出されなかったかどうかを確認
     expect(outputConsole).not.toHaveBeenCalled()
   })
   test('Should trigger output function', () => {
@@ -41,6 +42,7 @@ describe('Console button conditionally triggered', () => {
     const inputValue = screen.getByPlaceholderText("Enter");
     userEvent.type(inputValue, "test");
     userEvent.click(screen.getByRole("button"))
+    // 呼び出されたかどうかを確認
     expect(outputConsole).toHaveBeenCalled()
   })
 })
